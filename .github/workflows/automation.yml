@@ -1,0 +1,26 @@
+name: Blinkit Automation
+
+on:
+  schedule:
+    - cron: "0 */3 * * *"   # Runs every 3 hours
+  workflow_dispatch:        # Allows manual run button
+
+jobs:
+  run-automation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create credentials.json
+        run: echo '${{ secrets.GOOGLE_CREDENTIALS }}' > credentials.json
+
+      - name: Create token.json
+        run: echo '${{ secrets.GOOGLE_TOKEN }}' > token.json
+
+      - name: Build Docker Image
+        run: docker build -t blinkit-automation .
+
+      - name: Run Docker Container
+        run: docker run blinkit-automation
