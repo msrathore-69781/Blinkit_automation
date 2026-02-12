@@ -923,46 +923,27 @@ class InstamartAutomation:
             self.log(f"[ERROR] Scheduled workflow failed: {str(e)}")
             import traceback
             traceback.print_exc()
-
-
+            
 def main():
-    """Main function to run the scheduler"""
+    """Main function - run once and exit"""
+
     print("=" * 80)
-    print("Instamart GRN Scheduler - Excel Version")
-    print("Workflow: Gmail → Drive → Excel Processing → Sheets")
+    print("Instamart GRN Automation")
     print("=" * 80)
-    
+
     automation = InstamartAutomation()
-    
-    # Authenticate
+
     print("\nAuthenticating...")
     if not automation.authenticate():
-        print("ERROR: Authentication failed. Please check credentials.")
+        print("ERROR: Authentication failed.")
         return
-    
-    print("Authentication successful!")
-    
-    # Run immediately on start
-    print("\nRunning initial workflow...")
-    automation.run_scheduled_workflow()
-    
-    # Schedule to run every 3 hours
-    schedule.every(3).hours.do(automation.run_scheduled_workflow)
-    
-    print(f"\nScheduler started. Next run in 3 hours.")
-    print(f"Current time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    print("Press Ctrl+C to stop the scheduler\n")
-    
-    # Keep running
-    try:
-        while True:
-            schedule.run_pending()
-            import time
-            time.sleep(60)  # Check every minute
-    except KeyboardInterrupt:
-        print("\n\nScheduler stopped by user.")
-        print("=" * 80)
 
+    print("Authentication successful!")
+
+    print("\nRunning workflow...")
+    automation.run_scheduled_workflow()
+
+    print("\nWorkflow completed. Exiting.")
 
 if __name__ == "__main__":
     main()
