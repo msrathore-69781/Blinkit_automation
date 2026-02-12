@@ -1,0 +1,10 @@
+myenv/
+__pycache__/
+*.pyc
+
+token.json
+credentials.json
+token_bigquery.json
+token_gmail_drive.json
+
+*.log
