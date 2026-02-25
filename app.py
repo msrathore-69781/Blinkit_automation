@@ -42,14 +42,14 @@ CONFIG = {
         'sender': 'purchaseorder@handsontrades.com',  # Leave empty to search all senders
         'search_term': 'PO_ZHPL',  # Search for emails with "PO" in subject/body
         'attachment_filter': '.xlsx',  # Only download Excel files
-        'days_back': 2,
+        'days_back': 7,
         'max_results': 500
     },
     'sheet': {
         'drive_folder_id': '1nuvMdNYmciFDLo6mfAfyc_cXdbFWWLPp',
         'spreadsheet_id': '1urhhzYZy_-0l_KAW0_TkPBj7UThoFyQfmiKd4F3cRZk',
         'sheet_range': 'blinkit',
-        'days_back': 2,
+        'days_back': 7,
         'max_files': 500
     },
     # Excel column mapping - Update these to match your actual Excel columns
@@ -83,7 +83,7 @@ CONFIG = {
         'total_items_in_po': 'Total Items in PO',
         'total_quantity_in_po': 'Total Quantity in PO',
         'total_amount_of_po': 'Total Amount of PO',
-        'source_file': 'source_file'
+        'source_file': '    '
     },
     'workflow_log': {
         'spreadsheet_id': '1zebjRyYd2R1d2f9iOeLJFWvinVn7_rJ5OwF1wVicZKM',
@@ -923,7 +923,6 @@ class InstamartAutomation:
             self.log(f"[ERROR] Scheduled workflow failed: {str(e)}")
             import traceback
             traceback.print_exc()
-            
 def main():
     """Main function - run once and exit"""
 
