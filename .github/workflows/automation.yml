@@ -2,7 +2,7 @@ name: Blinkit Automation
 
 on:
   schedule:
-    - cron: "0 */3 * * *"   # Runs every 3 hours
+    - cron: "0 0 * * *"   # Runs every 3 hours
   workflow_dispatch:        # Allows manual run button
 
 jobs:
